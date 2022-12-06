@@ -1,9 +1,11 @@
 import pandas as pd
 
 
-file_data1 = pd.read_csv('CleanTestData.csv')
-file_data2 = pd.read_csv('TestData1.csv')
-df_3 = pd.concat([file_data2, file_data1], axis=1, join='inner')
+file_data1 = pd.read_csv('files/CleanTestData.csv')
+file_data2 = pd.read_csv('files/TestData1.csv')
+
+# df_3=file_data2.merge(file_data1,how='left')
+df_3=file_data2.merge(file_data1)
 
 value_list = []
 uom_list = []
@@ -56,3 +58,4 @@ for key1, key2 in zip(dict_data_of_attribute_values, dict_data_of_attribute_uoms
     df_3['Attribute UOM ' + str(k)] = dict_data_of_attribute_uoms[key2]
     k = k + 1
 df_3.to_csv('filled_data.csv', index=False)
+
